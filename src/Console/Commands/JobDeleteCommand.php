@@ -52,6 +52,11 @@ class JobDeleteCommand extends SymfonyCommand
             } else {
                 $this->delete($job);
 
+                $jobTest = $this->findJobTestPath($domain, $title. '__Test');
+                if ($jobTest) {
+                    $this->delete($jobTest);
+                }
+                
                 if (count($this->listJobs($domain)->first()) === 0) {
                     $this->delete($this->findDomainPath($domain));
                 }

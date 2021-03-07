@@ -50,6 +50,8 @@ class JobMakeCommand extends SymfonyCommand
         $domain = Str::studly($this->argument('domain'));
         $title = $this->parseName($this->argument('job'));
         $isQueueable = $this->option('queue');
+        //dump($title);echo 'JobMakeCommand.php:53'; exit;
+        
         try {
             $job = $generator->generate($title, $domain, $isQueueable);
 

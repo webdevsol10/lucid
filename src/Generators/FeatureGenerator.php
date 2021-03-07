@@ -10,7 +10,7 @@ class FeatureGenerator extends Generator
 {
     public function generate($feature, $service, array $jobs = [])
     {
-        $feature = Str::feature($feature);
+        //$feature = Str::feature($feature);
         $service = Str::service($service);
 
         $path = $this->findFeaturePath($service, $feature);
@@ -71,7 +71,7 @@ class FeatureGenerator extends Generator
 
     	$namespace = $this->findFeatureTestNamespace($service);
         $featureNamespace = $this->findFeatureNamespace($service)."\\$feature";
-        $testClass = $feature.'Test';
+        $testClass = $feature.'__Test';
 
     	$content = str_replace(
     		['{{namespace}}', '{{testclass}}', '{{feature}}', '{{feature_namespace}}'],

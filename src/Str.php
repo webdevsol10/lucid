@@ -30,6 +30,16 @@ class Str
     }
 
     /**
+     * @param $str
+     * @return string|string[]
+     */
+    public static function snake_long($str)
+    {
+        $ret = LaravelStr::snake($str);
+        return str_replace('_', '__', $ret);
+    }
+
+    /**
      * Determine the real name of the given name,
      * excluding the given pattern.
      * 	i.e. the name: "CreateArticleFeature.php" with pattern '/Feature.php'
@@ -60,7 +70,7 @@ class Str
      */
     public static function feature($name)
     {
-        return self::studly(preg_replace('/Feature(\.php)?$/', '', $name).'Feature');
+        return self::snake_long(preg_replace('/Feature(\.php)?$/', '', $name).'Feature');
     }
 
     /**
@@ -76,7 +86,7 @@ class Str
      */
     public static function job($name)
     {
-        return self::studly(preg_replace('/Job(\.php)?$/', '', $name).'Job');
+        return self::snake_long(preg_replace('/Job(\.php)?$/', '', $name).'Job');
     }
 
     /**
@@ -92,7 +102,7 @@ class Str
      */
     public static function operation($name)
     {
-        return self::studly(preg_replace('/Operation(\.php)?$/', '', $name).'Operation');
+        return self::snake_long(preg_replace('/Operation(\.php)?$/', '', $name).'Operation');
     }
 
     /**

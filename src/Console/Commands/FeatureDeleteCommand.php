@@ -52,6 +52,11 @@ class FeatureDeleteCommand extends SymfonyCommand
             } else {
                 $this->delete($feature);
 
+                $featureTest = $this->findFeatureTestPath($service, $title. '__Test');
+                if ($featureTest) {
+                    $this->delete($featureTest);
+                }
+
                 $this->info('Feature class <comment>'.$title.'</comment> deleted successfully.');
             }
         } catch (Exception $e) {
@@ -76,6 +81,7 @@ class FeatureDeleteCommand extends SymfonyCommand
      * Get the stub file for the generator.
      *
      * @return string
+     *
      */
     protected function getStub()
     {

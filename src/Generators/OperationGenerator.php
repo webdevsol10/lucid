@@ -10,7 +10,7 @@ class OperationGenerator extends Generator
 {
     public function generate($operation, $service, $isQueueable = false, array $jobs = [])
     {
-        $operation = Str::operation($operation);
+        //$operation = Str::operation($operation);
         $service = Str::service($service);
 
         $path = $this->findOperationPath($service, $operation);

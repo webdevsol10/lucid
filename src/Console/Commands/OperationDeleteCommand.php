@@ -52,6 +52,11 @@ class OperationDeleteCommand extends SymfonyCommand
             } else {
                 $this->delete($operation);
 
+                $operationTest = $this->findOperationTestPath($service, $title. '__Test');
+                if ($operationTest) {
+                    $this->delete($operationTest);
+                }
+
                 $this->info('Operation class <comment>'.$title.'</comment> deleted successfully.');
             }
         } catch (Exception $e) {

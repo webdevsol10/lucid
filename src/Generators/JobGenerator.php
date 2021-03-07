@@ -10,9 +10,15 @@ class JobGenerator extends Generator
 {
     public function generate($job, $domain, $isQueueable = false)
     {
-        $job = Str::job($job);
+        //$job = Str::job($job);
         $domain = Str::domain($domain);
         $path = $this->findJobPath($domain, $job);
+
+        //dump([
+        //    $job,
+        //    $domain,
+        //    $path
+        //]);echo 'JobGenerator.php:17'; exitJobGenerator;
 
         if ($this->exists($path)) {
             throw new Exception('Job already exists');
@@ -58,7 +64,7 @@ class JobGenerator extends Generator
 
         $namespace = $this->findDomainJobsTestsNamespace($domain);
         $jobNamespace = $this->findDomainJobsNamespace($domain)."\\$job";
-        $testClass = $job.'Test';
+        $testClass = $job.'__Test';
 
         $content = str_replace(
             ['{{namespace}}', '{{testclass}}', '{{job}}', '{{job_namespace}}'],
