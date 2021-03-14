@@ -11,6 +11,4 @@ class {{feature}} extends Feature
     {
 {{run_jobs}}
     }
-
-
 }
